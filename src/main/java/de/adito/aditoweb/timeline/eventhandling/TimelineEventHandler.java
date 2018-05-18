@@ -1,7 +1,11 @@
-package com.github.kmadito.timeline.eventhandling;
+package de.adito.aditoweb.timeline.eventhandling;
 
-import com.github.kmadito.timeline.definition.ITimelineEventHandler;
-import com.github.kmadito.timeline.listener.*;
+import de.adito.aditoweb.timeline.definition.ITimelineEventHandler;
+import de.adito.aditoweb.timeline.listener.*;
+import de.adito.aditoweb.timeline.listener.ITimelineActionListener;
+import de.adito.aditoweb.timeline.listener.ITimelinePauseListener;
+import de.adito.aditoweb.timeline.listener.ITimelinePlayListener;
+import de.adito.aditoweb.timeline.listener.ITimelineTickFinishListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

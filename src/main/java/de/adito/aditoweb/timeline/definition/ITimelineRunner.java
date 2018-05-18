@@ -1,4 +1,4 @@
-package com.github.kmadito.timeline.definition;
+package de.adito.aditoweb.timeline.definition;
 
 import org.jetbrains.annotations.NotNull;
 

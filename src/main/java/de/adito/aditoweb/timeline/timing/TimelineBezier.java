@@ -1,4 +1,4 @@
-package com.github.kmadito.timeline.timing;
+package de.adito.aditoweb.timeline.timing;
 
 /**
  * @author k.mifka, 10.01.2018

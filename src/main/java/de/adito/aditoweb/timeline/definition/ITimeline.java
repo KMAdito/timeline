@@ -1,7 +1,7 @@
-package com.github.kmadito.timeline.definition;
+package de.adito.aditoweb.timeline.definition;
 
-import com.github.kmadito.timeline.timing.ITimelineBezier;
-import com.github.kmadito.timeline.values.definition.ITimelineValue;
+import de.adito.aditoweb.timeline.timing.ITimelineBezier;
+import de.adito.aditoweb.timeline.values.definition.ITimelineValue;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

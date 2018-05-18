@@ -1,10 +1,10 @@
-package com.github.kmadito.timeline;
+package de.adito.aditoweb.timeline;
 
-import com.github.kmadito.timeline.definition.ITimeline;
-import com.github.kmadito.timeline.definition.ITimelineConstants;
-import com.github.kmadito.timeline.eventhandling.TimelineEventHandler;
-import com.github.kmadito.timeline.timing.timer.TimelineTimer;
-import com.github.kmadito.timeline.timing.timer.TimelineTimerTask;
+import de.adito.aditoweb.timeline.definition.ITimeline;
+import de.adito.aditoweb.timeline.definition.ITimelineConstants;
+import de.adito.aditoweb.timeline.eventhandling.TimelineEventHandler;
+import de.adito.aditoweb.timeline.timing.timer.TimelineTimer;
+import de.adito.aditoweb.timeline.timing.timer.TimelineTimerTask;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

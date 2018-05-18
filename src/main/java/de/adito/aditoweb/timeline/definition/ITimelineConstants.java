@@ -1,7 +1,7 @@
-package com.github.kmadito.timeline.definition;
+package de.adito.aditoweb.timeline.definition;
 
-import com.github.kmadito.timeline.timing.ITimelineBezier;
-import com.github.kmadito.timeline.timing.TimelineBeziers;
+import de.adito.aditoweb.timeline.timing.ITimelineBezier;
+import de.adito.aditoweb.timeline.timing.TimelineBeziers;
 
 /**
  * @author k.mifka, 10.04.2018

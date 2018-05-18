@@ -1,6 +1,6 @@
 package de.adito.aditoweb.timeline.timing.timer;
 
-import com.github.kmadito.timeline.timing.ITimelineTimerTaskCancelListener;
+import de.adito.aditoweb.timeline.timing.ITimelineTimerTaskCancelListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
