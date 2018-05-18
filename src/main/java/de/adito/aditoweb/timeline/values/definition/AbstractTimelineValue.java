@@ -1,6 +1,7 @@
-package com.github.kmadito.timeline.values.definition;
+package de.adito.aditoweb.timeline.values.definition;
 
 import com.github.kmadito.timeline.timing.ITimelineBezier;
+import com.sun.javafx.css.CalculatedValue;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -150,5 +151,45 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
           listener.accept(value);
       }
     }
+  }
+
+  @Override
+  public void setProgress(ITimelineBezier pDefaultTiming, float pProgress)
+  {
+    ITimelineBezier timingBezier = getTiming();
+
+    if (timingBezier == null)
+      timingBezier = pDefaultTiming;
+
+    float inOutProgress = _calculateInOutProgress(pProgress);
+
+    T value = calculateValue(timingBezier.calculateY(inOutProgress));
+
+    setValue(value);
+  }
+
+  protected abstract T calculateValue(float pProgress);
+
+  private float _calculateInOutProgress(float pProgress)
+  {
+    Float i = getIn();
+    Float o = getOut();
+
+    if(o == null && i == null)
+      return pProgress;
+
+    if (o == null)
+      o = 1F;
+
+    if (i == null)
+      i = 0F;
+
+    if (i > pProgress)
+      return 0F;
+
+    if (o < pProgress)
+      return 1F;
+
+    return (pProgress - i) / (o - i);
   }
 }

@@ -1,4 +1,4 @@
-package com.github.kmadito.timeline.values;
+package de.adito.aditoweb.timeline.values;
 
 import com.github.kmadito.timeline.timing.ITimelineBezier;
 import com.github.kmadito.timeline.values.definition.AbstractTimelineValue;

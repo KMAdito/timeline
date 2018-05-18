@@ -1,4 +1,4 @@
-package com.github.kmadito.timeline.timing;
+package de.adito.aditoweb.timeline.timing;
 
 import com.github.kmadito.timeline.timing.timer.TimelineTimerTask;
 import org.jetbrains.annotations.NotNull;

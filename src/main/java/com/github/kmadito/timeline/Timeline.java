@@ -94,49 +94,12 @@ public class Timeline extends AbstractTimeline
     return defaultTiming;
   }
 
-  private <T> void _calculateValue(ITimelineValue<T> pValue, float pProgress)
-  {
-    ITimelineBezier timingBezier = pValue.getTiming();
-
-    if (timingBezier == null)
-      timingBezier = defaultTiming;
-
-    T value = pValue.calculateValue(timingBezier.calculateY(pProgress));
-    pValue.setValue(value);
-  }
-
   private void _updateValues(float pProgress)
   {
     synchronized (values)
     {
       for (ITimelineValue<?> value : values)
-      {
-        float trimmedProgress = _calculateInOutProgress(value, pProgress);
-        _calculateValue(value, trimmedProgress);
-      }
+        value.setProgress(defaultTiming, pProgress);
     }
-  }
-
-  private float _calculateInOutProgress(ITimelineValue pValue, float pProgress)
-  {
-    Float i = pValue.getIn();
-    Float o = pValue.getOut();
-
-    if(o == null && i == null)
-      return pProgress;
-
-    if (o == null)
-      o = 1F;
-
-    if (i == null)
-      i = 0F;
-
-    if (i > pProgress)
-      return 0F;
-
-    if (o < pProgress)
-      return 1F;
-
-    return (pProgress - i) / (o - i);
   }
 }

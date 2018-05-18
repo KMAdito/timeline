@@ -45,6 +45,5 @@ public interface ITimelineValue<T>
 
   void unregisterConsumer(@NotNull Consumer<T> pListener);
 
-  @NotNull
-  T calculateValue(float pProgress);
+  void setProgress(ITimelineBezier pDefaultTiming, float pProgress);
 }
