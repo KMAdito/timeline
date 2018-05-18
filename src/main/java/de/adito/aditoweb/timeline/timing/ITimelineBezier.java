@@ -8,4 +8,6 @@ public interface ITimelineBezier
     float calculateX(float pT);
 
     float calculateY(float pT);
+
+    ITimelineBezier invert();
 }

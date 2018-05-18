@@ -30,6 +30,13 @@ public class TimelineBezier implements ITimelineBezier
     return _calculateValue(y1, y2, pT);
   }
 
+  @Override
+  public ITimelineBezier invert()
+  {
+    //noinspection SuspiciousNameCombination
+    return new TimelineBezier(y1, x1, y2, x2);
+  }
+
   private float _calculateValue(float pV1, float pV2, float pT)
   {
     float a = 1 - pT;
