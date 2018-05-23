@@ -70,10 +70,11 @@ public class Timeline extends AbstractTimeline
   @Override
   protected void updateProgress(float pProgress)
   {
-    if (runner != null)
-      runner.runValueFade(() -> _updateValues(pProgress));
-    else
-      _updateValues(pProgress);
+    synchronized (values)
+    {
+      for (ITimelineValue<?> value : values)
+        value.setProgress(defaultTiming, runner, pProgress);
+    }
   }
 
   @Override
@@ -93,14 +94,5 @@ public class Timeline extends AbstractTimeline
   public ITimelineBezier getDefaultTiming()
   {
     return defaultTiming;
-  }
-
-  private void _updateValues(float pProgress)
-  {
-    synchronized (values)
-    {
-      for (ITimelineValue<?> value : values)
-        value.setProgress(defaultTiming, pProgress);
-    }
   }
 }

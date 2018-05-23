@@ -1,5 +1,6 @@
 package de.adito.aditoweb.timeline.values.definition;
 
+import de.adito.aditoweb.timeline.definition.ITimelineRunner;
 import de.adito.aditoweb.timeline.timing.ITimelineBezier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,5 +46,5 @@ public interface ITimelineValue<T>
 
   void unregisterConsumer(@NotNull Consumer<T> pListener);
 
-  void setProgress(ITimelineBezier pDefaultTiming, float pProgress);
+  void setProgress(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress);
 }

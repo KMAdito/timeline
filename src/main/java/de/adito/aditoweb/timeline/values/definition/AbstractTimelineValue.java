@@ -1,5 +1,6 @@
 package de.adito.aditoweb.timeline.values.definition;
 
+import de.adito.aditoweb.timeline.definition.ITimelineRunner;
 import de.adito.aditoweb.timeline.timing.ITimelineBezier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -140,20 +141,11 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
 
   public void setValue(@NotNull T pValue)
   {
-    if(!Objects.equals(value, pValue))
-    {
-      value = pValue;
-
-      synchronized (consumers)
-      {
-        for (Consumer<T> listener : consumers)
-          listener.accept(value);
-      }
-    }
+    _setValue(pValue, null);
   }
 
   @Override
-  public void setProgress(ITimelineBezier pDefaultTiming, float pProgress)
+  public void setProgress(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress)
   {
     ITimelineBezier timingBezier = getTiming();
 
@@ -164,10 +156,29 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
 
     T value = calculateValue(timingBezier.calculateY(inOutProgress));
 
-    setValue(value);
+    _setValue(value, pRunner);
   }
 
   protected abstract T calculateValue(float pProgress);
+
+  private void _setValue(@NotNull T pValue, @Nullable ITimelineRunner pRunner)
+  {
+    if(!Objects.equals(value, pValue))
+    {
+      value = pValue;
+
+      synchronized (consumers)
+      {
+        for (Consumer<T> listener : consumers)
+        {
+          if (pRunner != null)
+            pRunner.runValueFade(() -> listener.accept(value));
+          else
+            listener.accept(value);
+        }
+      }
+    }
+  }
 
   private float _calculateInOutProgress(float pProgress)
   {
