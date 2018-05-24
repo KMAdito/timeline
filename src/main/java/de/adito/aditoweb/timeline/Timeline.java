@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Eine Timeline ist ein Zeitstrahl, welcher ITimelineValues aufnhemen kann
- * und vorwiegen zur Realisierung von Animationen gedacht ist.
+ * und vorwiegend zur Realisierung von Animationen gedacht ist.
  *
  * Sie nimmt eine Dauer an (setDuration()), welche angibt, wie lange es dauert,
  * alle hinzugefügten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
@@ -89,7 +89,7 @@ public class Timeline extends AbstractTimeline
     synchronized (values)
     {
       for (ITimelineValue<?> value : values)
-        value.setProgress(defaultTiming, runner, pProgress);
+        value.updateValue(defaultTiming, runner, pProgress);
     }
   }
 

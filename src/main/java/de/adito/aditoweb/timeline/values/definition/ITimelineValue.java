@@ -118,5 +118,12 @@ public interface ITimelineValue<T>
    */
   void unregisterConsumer(@NotNull Consumer<T> pConsumer);
 
-  void setProgress(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress);
+  /**
+   * Aktualisiert den Wert in Abhängigkeit des Fortschritts und Timings
+   *
+   * @param pDefaultTiming Standard-Timing
+   * @param pRunner ITimelineRunner
+   * @param pProgress Frotschritt in Prozent
+   */
+  void updateValue(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress);
 }
