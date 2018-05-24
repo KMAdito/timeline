@@ -3,7 +3,7 @@ package de.adito.aditoweb.timeline.timing.timer;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Abbruchslistener für den TimelineTimerTask
+ * Abbruchslistener fÃ¼r den TimelineTimerTask
  *
  * @author k.mifka, 17.01.2018
  */

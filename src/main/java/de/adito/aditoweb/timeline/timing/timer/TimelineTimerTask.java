@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.TimerTask;
 
 /**
- * Spezieller TimerTask, welcher einen Abbruchslistener unterstützt
+ * Spezieller TimerTask, welcher einen Abbruchslistener unterstÃ¼tzt
  *
  * @author k.mifka, 17.01.2018
  */
@@ -16,9 +16,9 @@ public abstract class TimelineTimerTask extends TimerTask
   private final List<ITimelineTimerTaskCancelListener> cancelListeners = new ArrayList<>();
 
   /**
-   * Fügt einen Abbruchslistener hinzu
+   * FÃ¼gt einen Abbruchslistener hinzu
    *
-   * @param pListener hinzuzufügender Listener
+   * @param pListener hinzuzufÃ¼gender Listener
    */
   public void addCancelListener(@NotNull ITimelineTimerTaskCancelListener pListener)
   {

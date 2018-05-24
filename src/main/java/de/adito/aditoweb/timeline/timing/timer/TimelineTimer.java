@@ -6,10 +6,10 @@ import java.util.Timer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Spezieller Timer für die Timeline
+ * Spezieller Timer fÃ¼r die Timeline
  *
- * Dieser führt alle TimelineTimerTasks innerhalb eines einzigen Timers aus, um Ressourcen zu sparen.
- * Wird kein Task ausgeführt, wird der aktuelle Timer gelöscht, um Speicherlecks zu verhindern.
+ * Dieser fÃ¼hrt alle TimelineTimerTasks innerhalb eines einzigen Timers aus, um Ressourcen zu sparen.
+ * Wird kein Task ausgefÃ¼hrt, wird der aktuelle Timer gelÃ¶scht, um Speicherlecks zu verhindern.
  *
  * @author k.mifka, 17.01.2018
  */
@@ -22,9 +22,9 @@ public class TimelineTimer
   private static final ITimelineTimerTaskCancelListener CANCEL_LISTENER = new _CancelListener();
 
   /**
-   * Führt einen TimelineTimerTask aus
+   * FÃ¼hrt einen TimelineTimerTask aus
    *
-   * @param pTask auszuführender Task
+   * @param pTask auszufÃ¼hrender Task
    * @param pPeriod Dauer in Millisekunden zwischen den Perioden
    */
   public static void schedule(@NotNull TimelineTimerTask pTask, long pPeriod)
@@ -52,7 +52,7 @@ public class TimelineTimer
   }
 
   /**
-   * Zerstört den Timer
+   * ZerstÃ¶rt den Timer
    */
   private static void _destroyTimer()
   {
@@ -69,8 +69,8 @@ public class TimelineTimer
   }
 
   /**
-   * Listener, welcher auslöst, sobald ein Task abgebrochen wurde
-   * Sind alle Tasks abgebrochenm, wird der Timer zerstört.
+   * Listener, welcher auslÃ¶st, sobald ein Task abgebrochen wurde
+   * Sind alle Tasks abgebrochenm, wird der Timer zerstÃ¶rt.
    */
   private static class _CancelListener implements ITimelineTimerTaskCancelListener
   {

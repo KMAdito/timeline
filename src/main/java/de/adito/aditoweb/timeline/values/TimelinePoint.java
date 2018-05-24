@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 /**
- * TimelineValue für Farben
+ * TimelineValue fÃ¼r Farben
  *
  * @author k.mifka, 10.01.2018
  */

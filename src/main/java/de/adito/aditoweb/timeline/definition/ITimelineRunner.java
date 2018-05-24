@@ -4,16 +4,16 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Dieses Interface dient zur Aufnahme eines Runnables,
- * um den Thread für die Wertänderung zu bestimmen
+ * um den Thread fÃ¼r die WertÃ¤nderung zu bestimmen
  *
  * @author k.mifka, 19.01.2018
  */
 public interface ITimelineRunner
 {
   /**
-   * Wertänderungen werden innerhalb des Runnable ausgeführt.
+   * WertÃ¤nderungen werden innerhalb des Runnable ausgefÃ¼hrt.
    *
-   * @param pRunnable Runnable für Wertänderungen
+   * @param pRunnable Runnable fÃ¼r WertÃ¤nderungen
    */
   void runValueChange(@NotNull Runnable pRunnable);
 }

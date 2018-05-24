@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 /**
- * TimelineValue für Integer
+ * TimelineValue fÃ¼r Integer
  *
  * @author k.mifka, 10.01.2018
  */

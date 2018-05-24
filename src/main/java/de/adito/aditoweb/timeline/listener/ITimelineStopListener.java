@@ -1,7 +1,7 @@
 package de.adito.aditoweb.timeline.listener;
 
 /**
- * PauseListener: löst aus, sobald die Timeline gestoppt wurde.
+ * PauseListener: lÃ¶st aus, sobald die Timeline gestoppt wurde.
  *
  * @author k.mifka, 17.01.2018
  */

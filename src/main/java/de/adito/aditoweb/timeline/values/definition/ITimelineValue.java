@@ -74,7 +74,7 @@ public interface ITimelineValue<T>
   void setOut(@Nullable Float pProgress);
 
   /**
-   * Gibt den Fortschritt zurück, bei dem die Interpolation beginnen soll
+   * Gibt den Fortschritt zurÃ¼ck, bei dem die Interpolation beginnen soll
    *
    * @return Fortschritt in Prozent
    */
@@ -82,7 +82,7 @@ public interface ITimelineValue<T>
   Float getIn();
 
   /**
-   * Gibt den Fortschritt zurück, bei dem die Interpolation enden soll
+   * Gibt den Fortschritt zurÃ¼ck, bei dem die Interpolation enden soll
    *
    * @return Fortschritt in Prozent
    */
@@ -97,7 +97,7 @@ public interface ITimelineValue<T>
   void setTiming(@Nullable ITimelineBezier pTiming);
 
   /**
-   * Gibt das Timing zurück
+   * Gibt das Timing zurÃ¼ck
    *
    * @return Timing-Bezierkurve
    */
@@ -107,19 +107,19 @@ public interface ITimelineValue<T>
   /**
    * Registriert einen Consumer
    *
-   * @param pConsumer Consumer für Wertänderungen
+   * @param pConsumer Consumer fÃ¼r WertÃ¤nderungen
    */
   void registerConsumer(@NotNull Consumer<T> pConsumer);
 
   /**
    * Entfernt einen Consumer
    *
-   * @param pConsumer Consumer für Wertänderungen
+   * @param pConsumer Consumer fÃ¼r WertÃ¤nderungen
    */
   void unregisterConsumer(@NotNull Consumer<T> pConsumer);
 
   /**
-   * Aktualisiert den Wert in Abhängigkeit des Fortschritts und Timings
+   * Aktualisiert den Wert in AbhÃ¤ngigkeit des Fortschritts und Timings
    *
    * @param pDefaultTiming Standard-Timing
    * @param pRunner ITimelineRunner

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Eventhandler für die TImeline
+ * Eventhandler fÃ¼r die TImeline
  *
  * @author k.mifka, 17.01.2018
  */
@@ -101,9 +101,9 @@ public class TimelineEventHandler implements ITimelineEventHandler
   }
 
   /**
-   * Fügt einen Listener hinzu
+   * FÃ¼gt einen Listener hinzu
    *
-   * @param pListener hinzuzufügender Listener
+   * @param pListener hinzuzufÃ¼gender Listener
    */
   private void _addListener(ITimelineActionListener pListener)
   {
@@ -127,7 +127,7 @@ public class TimelineEventHandler implements ITimelineEventHandler
   }
 
   /**
-   * Feuert ein Event der übergebenen Klasse
+   * Feuert ein Event der Ã¼bergebenen Klasse
    *
    * @param pActionListener Klasse des zu feuernden Listeners
    */

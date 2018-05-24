@@ -1,7 +1,7 @@
 package de.adito.aditoweb.timeline.timing;
 
 /**
- * Bezierkurfe für die Timeline
+ * Bezierkurve fÃ¼r die Timeline
  *
  * @author k.mifka, 10.01.2018
  */
@@ -52,7 +52,7 @@ public class TimelineBezier implements ITimelineBezier
    *
    * @param pV1 X1 oder Y1
    * @param pV2 X2 oder Y2
-   * @param pT Wert für die Berechnung
+   * @param pT Wert fÃ¼r die Berechnung
    * @return X- oder Y-Wert
    */
   private float _calculateValue(float pV1, float pV2, float pT)

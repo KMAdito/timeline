@@ -14,16 +14,16 @@ import java.util.List;
  * und vorwiegen zur Realisierung von Animationen gedacht ist.
  *
  * Sie nimmt eine Dauer an (setDuration()), welche angibt, wie lange es dauert,
- * alle hinzugefügten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
+ * alle hinzugefÃ¼gten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
  *
- * Die Interpolation lässt sich mithilfe von Bezier-Kurven timen (setDefaultTiming())
+ * Die Interpolation lÃ¤sst sich mithilfe von Bezier-Kurven timen (setDefaultTiming())
  *
  * @author k.mifka, 10.01.2018
  */
 public interface ITimeline extends ITimelineEventHandler
 {
   /**
-   * ITimelineValue hinzufügen
+   * ITimelineValue hinzufÃ¼gen
    *
    * @param pAdjustValue ITimelineValue
    */
@@ -42,9 +42,9 @@ public interface ITimeline extends ITimelineEventHandler
   void removeAll();
 
   /**
-   * Liste mit allen hinzugefügten ITimelineValues
+   * Liste mit allen hinzugefÃ¼gten ITimelineValues
    *
-   * @return Liste mit allen hinzugefügten ITimelineValues
+   * @return Liste mit allen hinzugefÃ¼gten ITimelineValues
    */
   @NotNull
   List<ITimelineValue> getValues();
@@ -57,7 +57,7 @@ public interface ITimeline extends ITimelineEventHandler
   void setDuration(long pMillis);
 
   /**
-   * Gibt die Dauer der Timeline zurück
+   * Gibt die Dauer der Timeline zurÃ¼ck
    *
    * @return Dauer in Millisekunden
    */
@@ -71,7 +71,7 @@ public interface ITimeline extends ITimelineEventHandler
   void setTickDelay(long pTickDelay);
 
   /**
-   * Gibt die Dauer zwischen den einzelnen Interpolationen zurück
+   * Gibt die Dauer zwischen den einzelnen Interpolationen zurÃ¼ck
    *
    * @return Dauer in Millisekunden
    */
@@ -98,9 +98,9 @@ public interface ITimeline extends ITimelineEventHandler
   void stop();
 
   /**
-   * Gibt an, ob die Interpolation gerade läuft
+   * Gibt an, ob die Interpolation gerade lÃ¤uft
    *
-   * @return true, wenn sie läuft
+   * @return true, wenn sie lÃ¤uft
    */
   boolean isRunning();
 
@@ -121,9 +121,9 @@ public interface ITimeline extends ITimelineEventHandler
   /**
    * Setzt den "Runner"
    *
-   * Hier kann der Thread gesetzt werden, in welchem die Wertänderungen ausgeführt werden sollen.
+   * Hier kann der Thread gesetzt werden, in welchem die WertÃ¤nderungen ausgefÃ¼hrt werden sollen.
    *
-   * Beispiel für Swing-Animation: setRunner(SwingUtilities::invokeLater);
+   * Beispiel fÃ¼r Swing-Animation: setRunner(SwingUtilities::invokeLater);
    *
    * @param pFadeRunner ITimelineRunner
    */
@@ -139,7 +139,7 @@ public interface ITimeline extends ITimelineEventHandler
   void setDefaultTiming(@NotNull ITimelineBezier pDefaultTiming);
 
   /**
-   * Gibt das Standard-Timing zurück
+   * Gibt das Standard-Timing zurÃ¼ck
    *
    * @return Standard-Timing
    */

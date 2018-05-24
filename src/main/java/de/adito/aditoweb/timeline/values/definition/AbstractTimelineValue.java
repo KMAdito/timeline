@@ -48,7 +48,7 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
    *
    * @param pStart Startwert
    * @param pEnd Endwert
-   * @param pConsumer Consumer f¸r Wert‰nderungen
+   * @param pConsumer Consumer f√ºr Wert√§nderungen
    */
   public AbstractTimelineValue(T pStart, T pEnd, Consumer<T> pConsumer)
   {
@@ -61,7 +61,7 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
    *
    * @param pStart Startwert
    * @param pEnd Endwert
-   * @param pTiming Das Timing f¸r den Wert (Bei null wird das Standardtiming der Timeline verwendet)
+   * @param pTiming Das Timing f√ºr den Wert (Bei null wird das Standardtiming der Timeline verwendet)
    */
   public AbstractTimelineValue(@NotNull T pStart, @NotNull T pEnd, @Nullable ITimelineBezier pTiming)
   {
@@ -74,8 +74,8 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
    *
    * @param pStart Startwert
    * @param pEnd Endwert
-   * @param pTiming Das Timing f¸r den Wert (Bei null wird das Standardtiming der Timeline verwendet)
-   * @param pConsumer Consumer f¸r Wert‰nderungen
+   * @param pTiming Das Timing f√ºr den Wert (Bei null wird das Standardtiming der Timeline verwendet)
+   * @param pConsumer Consumer f√ºr Wert√§nderungen
    */
   public AbstractTimelineValue(T pStart, T pEnd, ITimelineBezier pTiming, Consumer<T> pConsumer)
   {
@@ -185,9 +185,9 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
   }
 
   /**
-   * Berechnet seinen Wert in Abh‰ngigket vom Fortschritt
+   * Berechnet seinen Wert in Abh√§ngigket vom Fortschritt
    *
-   * ACHTUNG: Hier muss das Timing NICHT ber¸cksichtigt werden.
+   * ACHTUNG: Hier muss das Timing NICHT ber√ºcksichtigt werden.
    *
    * @param pProgress Frotschritt in Prozent
    * @return berechneter Wert
@@ -198,7 +198,7 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
    * Setzt seinen Wert und informiert alle Consumer
    *
    * @param pValue zu setztenden Wert
-   * @param pRunner Thread f¸r Wert‰nderungen
+   * @param pRunner Thread f√ºr Wert√§nderungen
    */
   private void _setValue(@NotNull T pValue, @Nullable ITimelineRunner pRunner)
   {
@@ -252,7 +252,7 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
   }
 
   /**
-   * Aktualisiert den Wert in Abh‰ngigkeit des Fortschritts und Timings
+   * Aktualisiert den Wert in Abh√§ngigkeit des Fortschritts und Timings
    *
    * @param pDefaultTiming Standard-Timing
    * @param pRunner ITimelineRunner
@@ -273,10 +273,10 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
   }
 
   /**
-   * Berechnet den Fortschritt in Abh‰ngigkeit der In- und Out-Angaben
+   * Berechnet den Fortschritt in Abh√§ngigkeit der In- und Out-Angaben
    *
    * @param pProgress Fortschritt
-   * @return Fortschritt in Abh‰ngigkeit der In- und Out-Angaben
+   * @return Fortschritt in Abh√§ngigkeit der In- und Out-Angaben
    */
   private float _calculateInOutProgress(float pProgress)
   {

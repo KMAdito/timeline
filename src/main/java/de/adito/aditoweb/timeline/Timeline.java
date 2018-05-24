@@ -15,9 +15,9 @@ import java.util.List;
  * und vorwiegend zur Realisierung von Animationen gedacht ist.
  *
  * Sie nimmt eine Dauer an (setDuration()), welche angibt, wie lange es dauert,
- * alle hinzugefügten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
+ * alle hinzugefÃ¼gten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
  *
- * Die Interpolation lässt sich mithilfe von Bezier-Kurven timen (setDefaultTiming())
+ * Die Interpolation lÃ¤sst sich mithilfe von Bezier-Kurven timen (setDefaultTiming())
  *
  * @author k.mifka, 10.01.2018
  */
