@@ -28,8 +28,6 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
 
   private final List<Consumer<T>> consumers = new ArrayList<>();
 
-  private Thread valueThread;
-
   /**
    * Konstruktor
    *
@@ -180,8 +178,16 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
   @Override
   public void updateValue(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress)
   {
-    if(valueThread == null || !valueThread.isAlive() || pProgress == 1 || pProgress == 0)
-      _startValueThread(pDefaultTiming, pRunner, pProgress);
+    ITimelineBezier timingBezier = getTiming();
+
+    if (timingBezier == null)
+      timingBezier = pDefaultTiming;
+
+    float inOutProgress = _calculateInOutProgress(pProgress);
+
+    T value = calculateValue(timingBezier.calculateY(inOutProgress));
+
+    _setValue(value, pRunner);
   }
 
   /**
@@ -217,59 +223,6 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
         }
       }
     }
-  }
-
-  /**
-   * Wartet auf den ValueThread
-   */
-  private void _waitForValueThread()
-  {
-    while (valueThread != null && valueThread.isAlive())
-    {
-      try
-      {
-        valueThread.join();
-      }
-      catch (InterruptedException pE)
-      {
-        //egal da while
-      }
-    }
-  }
-
-  /**
-   * Startet einen Thread zum aktualisieren des Werts
-   *
-   * @param pDefaultTiming Standard-Timing
-   * @param pRunner ITimelineRunner
-   * @param pProgress Frotschritt in Prozent
-   */
-  private void _startValueThread(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress)
-  {
-    _waitForValueThread();
-    valueThread = new Thread(() -> _updateValue(pDefaultTiming, pRunner, pProgress));
-    valueThread.start();
-  }
-
-  /**
-   * Aktualisiert den Wert in Abhängigkeit des Fortschritts und Timings
-   *
-   * @param pDefaultTiming Standard-Timing
-   * @param pRunner ITimelineRunner
-   * @param pProgress Frotschritt in Prozent
-   */
-  private void _updateValue(ITimelineBezier pDefaultTiming, ITimelineRunner pRunner, float pProgress)
-  {
-    ITimelineBezier timingBezier = getTiming();
-
-    if (timingBezier == null)
-      timingBezier = pDefaultTiming;
-
-    float inOutProgress = _calculateInOutProgress(pProgress);
-
-    T value = calculateValue(timingBezier.calculateY(inOutProgress));
-
-    _setValue(value, pRunner);
   }
 
   /**

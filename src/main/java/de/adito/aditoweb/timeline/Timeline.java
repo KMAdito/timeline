@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Eine Timeline ist ein Zeitstrahl, welcher ITimelineValues aufnhemen kann
- * und vorwiegend zur Realisierung von Animationen gedacht ist.
+ * und vorwiegen zur Realisierung von Animationen gedacht ist.
  *
  * Sie nimmt eine Dauer an (setDuration()), welche angibt, wie lange es dauert,
  * alle hinzugefügten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
