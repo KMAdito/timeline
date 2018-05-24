@@ -12,27 +12,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Eventhandler für die TImeline
+ *
  * @author k.mifka, 17.01.2018
  */
 public class TimelineEventHandler implements ITimelineEventHandler
 {
   private final List<ITimelineActionListener> actionListener = new ArrayList<>();
 
+  /**
+   * Feuert ein PauseEvent
+   */
   protected void firePauseEvent()
   {
     _fireEvent(ITimelinePauseListener.class);
   }
 
+  /**
+   * Feuert ein PlayEvent
+   */
   protected void firePlayEvent()
   {
     _fireEvent(ITimelinePlayListener.class);
   }
 
+  /**
+   * Feuert ein StopEvent
+   */
   protected void fireStopEvent()
   {
     _fireEvent(ITimelineStopListener.class);
   }
 
+  /**
+   * Feuert ein TickFinishEvent
+   */
   protected void fireTickFinishEvent()
   {
     _fireEvent(ITimelineTickFinishListener.class);
@@ -86,6 +100,11 @@ public class TimelineEventHandler implements ITimelineEventHandler
     _removeListener(pListener);
   }
 
+  /**
+   * Fügt einen Listener hinzu
+   *
+   * @param pListener hinzuzufügender Listener
+   */
   private void _addListener(ITimelineActionListener pListener)
   {
     synchronized (actionListener)
@@ -94,6 +113,11 @@ public class TimelineEventHandler implements ITimelineEventHandler
     }
   }
 
+  /**
+   * Entfernt einen Listener
+   *
+   * @param pListener zu entfernender Listener
+   */
   private void _removeListener(ITimelineActionListener pListener)
   {
     synchronized (actionListener)
@@ -102,6 +126,11 @@ public class TimelineEventHandler implements ITimelineEventHandler
     }
   }
 
+  /**
+   * Feuert ein Event der übergebenen Klasse
+   *
+   * @param pActionListener Klasse des zu feuernden Listeners
+   */
   private void _fireEvent(Class<? extends ITimelineActionListener> pActionListener)
   {
     for (ITimelineActionListener action : actionListener)

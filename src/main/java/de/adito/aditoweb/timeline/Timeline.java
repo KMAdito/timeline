@@ -11,6 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Eine Timeline ist ein Zeitstrahl, welcher ITimelineValues aufnhemen kann
+ * und vorwiegen zur Realisierung von Animationen gedacht ist.
+ *
+ * Sie nimmt eine Dauer an (setDuration()), welche angibt, wie lange es dauert,
+ * alle hinzugefügten ITimelineValues vom Startwert bis zu Endwert zu interpolieren.
+ *
+ * Die Interpolation lässt sich mithilfe von Bezier-Kurven timen (setDefaultTiming())
+ *
  * @author k.mifka, 10.01.2018
  */
 public class Timeline extends AbstractTimeline
@@ -20,11 +28,19 @@ public class Timeline extends AbstractTimeline
   private ITimelineRunner runner;
   private ITimelineBezier defaultTiming;
 
+  /**
+   * Konstruktor
+   */
   public Timeline()
   {
     this(null);
   }
 
+  /**
+   * Konstruktor
+   *
+   * @param pDefaultTiming Standard-Timing-Bezierkurve
+   */
   public Timeline(@Nullable ITimelineBezier pDefaultTiming)
   {
     defaultTiming = pDefaultTiming;
@@ -62,9 +78,9 @@ public class Timeline extends AbstractTimeline
 
   @NotNull
   @Override
-  public ITimelineValue[] getValues()
+  public List<ITimelineValue> getValues()
   {
-    return values.toArray(new ITimelineValue[0]);
+    return new ArrayList<>(values);
   }
 
   @Override

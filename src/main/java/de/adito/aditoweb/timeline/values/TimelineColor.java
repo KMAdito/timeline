@@ -9,13 +9,15 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 /**
+ * TimelineValue für Farben
+ *
  * @author k.mifka, 10.01.2018
  */
 public class TimelineColor extends AbstractTimelineValue<Color>
 {
   public TimelineColor()
   {
-    super(Color.BLACK, Color.BLACK);
+    super(Color.BLACK, Color.WHITE);
   }
 
   public TimelineColor(@NotNull Color pStart, @NotNull Color pEnd)

@@ -1,12 +1,16 @@
 package de.adito.aditoweb.timeline.timing.timer;
 
-import de.adito.aditoweb.timeline.timing.ITimelineTimerTaskCancelListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Timer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * Spezieller Timer für die Timeline
+ *
+ * Dieser führt alle TimelineTimerTasks innerhalb eines einzigen Timers aus, um Ressourcen zu sparen.
+ * Wird kein Task ausgeführt, wird der aktuelle Timer gelöscht, um Speicherlecks zu verhindern.
+ *
  * @author k.mifka, 17.01.2018
  */
 public class TimelineTimer
@@ -17,7 +21,13 @@ public class TimelineTimer
   private static final AtomicInteger RUNNING_TASKS = new AtomicInteger();
   private static final ITimelineTimerTaskCancelListener CANCEL_LISTENER = new _CancelListener();
 
-  public static void schedule(@NotNull TimelineTimerTask pTask, int pPeriod)
+  /**
+   * Führt einen TimelineTimerTask aus
+   *
+   * @param pTask auszuführender Task
+   * @param pPeriod Dauer in Millisekunden zwischen den Perioden
+   */
+  public static void schedule(@NotNull TimelineTimerTask pTask, long pPeriod)
   {
     synchronized (lock)
     {
@@ -29,6 +39,9 @@ public class TimelineTimer
     }
   }
 
+  /**
+   * Erzeugt den Timer
+   */
   private static void _createTimer()
   {
     if(timer == null)
@@ -38,6 +51,9 @@ public class TimelineTimer
     }
   }
 
+  /**
+   * Zerstört den Timer
+   */
   private static void _destroyTimer()
   {
     synchronized (lock)
@@ -52,6 +68,10 @@ public class TimelineTimer
     }
   }
 
+  /**
+   * Listener, welcher auslöst, sobald ein Task abgebrochen wurde
+   * Sind alle Tasks abgebrochenm, wird der Timer zerstört.
+   */
   private static class _CancelListener implements ITimelineTimerTaskCancelListener
   {
     @Override

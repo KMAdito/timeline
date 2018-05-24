@@ -9,6 +9,8 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 /**
+ * TimelineValue für Farben
+ *
  * @author k.mifka, 10.01.2018
  */
 public class TimelinePoint extends AbstractTimelineValue<Point>

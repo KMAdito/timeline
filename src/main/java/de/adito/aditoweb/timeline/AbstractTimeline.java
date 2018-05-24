@@ -9,6 +9,8 @@ import de.adito.aditoweb.timeline.timing.timer.TimelineTimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
+ * Hier werden die gundlegende Fuktionalität einer Timeline bereitgestellt.
+ *
  * @author k.mifka, 10.04.2018
  */
 public abstract class AbstractTimeline extends TimelineEventHandler implements ITimeline
@@ -19,29 +21,29 @@ public abstract class AbstractTimeline extends TimelineEventHandler implements I
 
   private final AtomicBoolean running = new AtomicBoolean();
 
-  private int duration = ITimelineConstants.DEFAULT_DURATION;
-  private int tickDelay = ITimelineConstants.DEFAULT_TICK_DELAY;
+  private long duration = ITimelineConstants.DEFAULT_DURATION;
+  private long tickDelay = ITimelineConstants.DEFAULT_TICK_DELAY;
 
   @Override
-  public void setDuration(int pMillis)
+  public void setDuration(long pMillis)
   {
     duration = pMillis;
   }
 
   @Override
-  public int getDuration()
+  public long getDuration()
   {
     return duration;
   }
 
   @Override
-  public int getTickDelay()
+  public long getTickDelay()
   {
     return tickDelay;
   }
 
   @Override
-  public void setTickDelay(int pTickDelay)
+  public void setTickDelay(long pTickDelay)
   {
     tickDelay = pTickDelay;
     _updateTimer();
@@ -108,6 +110,11 @@ public abstract class AbstractTimeline extends TimelineEventHandler implements I
     }
   }
 
+  /**
+   * Aktualisiert den Fortschritt
+   *
+   * @param pProgress Fortschritt in Prozent
+   */
   protected abstract void updateProgress(float pProgress);
 
   private void _play()
@@ -118,12 +125,18 @@ public abstract class AbstractTimeline extends TimelineEventHandler implements I
     firePlayEvent();
   }
 
+  /**
+   * Pausiert die Timeline
+   */
   private void _pause()
   {
     if (running.getAndSet(false))
       firePauseEvent();
   }
 
+  /**
+   * Stoppt die Timeline
+   */
   private void _stop()
   {
     if (running.getAndSet(false))
@@ -135,6 +148,9 @@ public abstract class AbstractTimeline extends TimelineEventHandler implements I
     }
   }
 
+  /**
+   * Aktualisiert den Timer
+   */
   private void _updateTimer()
   {
     if (running.get())
@@ -146,6 +162,10 @@ public abstract class AbstractTimeline extends TimelineEventHandler implements I
     }
   }
 
+  /**
+   * Timertask der Timeline
+   * Hier werden die Fortschrittsänderungen veranlasst
+   */
   private class _TimelineTask extends TimelineTimerTask
   {
     @Override

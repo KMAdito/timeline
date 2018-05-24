@@ -11,6 +11,8 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
+ * Abstrakte TimelineValue
+ *
  * @author k.mifka, 10.01.2018
  */
 public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
@@ -26,6 +28,12 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
 
   private final List<Consumer<T>> consumers = new ArrayList<>();
 
+  /**
+   * Konstruktor
+   *
+   * @param pStart Startwert
+   * @param pEnd Endwert
+   */
   public AbstractTimelineValue(T pStart, T pEnd)
   {
     start = pStart;
@@ -33,18 +41,40 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
     value = start;
   }
 
+  /**
+   * Konstruktor
+   *
+   * @param pStart Startwert
+   * @param pEnd Endwert
+   * @param pConsumer Consumer für Wertänderungen
+   */
   public AbstractTimelineValue(T pStart, T pEnd, Consumer<T> pConsumer)
   {
     this(pStart, pEnd);
     registerConsumer(pConsumer);
   }
 
+  /**
+   * Konstruktor
+   *
+   * @param pStart Startwert
+   * @param pEnd Endwert
+   * @param pTiming Das Timing für den Wert (Bei null wird das Standardtiming der Timeline verwendet)
+   */
   public AbstractTimelineValue(@NotNull T pStart, @NotNull T pEnd, @Nullable ITimelineBezier pTiming)
   {
     this(pStart, pEnd);
     timing = pTiming;
   }
 
+  /**
+   * Konstruktor
+   *
+   * @param pStart Startwert
+   * @param pEnd Endwert
+   * @param pTiming Das Timing für den Wert (Bei null wird das Standardtiming der Timeline verwendet)
+   * @param pConsumer Consumer für Wertänderungen
+   */
   public AbstractTimelineValue(T pStart, T pEnd, ITimelineBezier pTiming, Consumer<T> pConsumer)
   {
     this(pStart, pEnd, pConsumer);
@@ -85,20 +115,20 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
   }
 
   @Override
-  public void registerConsumer(@NotNull Consumer<T> pListener)
+  public void registerConsumer(@NotNull Consumer<T> pConsumer)
   {
     synchronized (consumers)
     {
-      consumers.add(pListener);
+      consumers.add(pConsumer);
     }
   }
 
   @Override
-  public void unregisterConsumer(@NotNull Consumer<T> pListener)
+  public void unregisterConsumer(@NotNull Consumer<T> pConsumer)
   {
     synchronized (consumers)
     {
-      consumers.remove(pListener);
+      consumers.remove(pConsumer);
     }
   }
 
@@ -139,6 +169,7 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
     return timing;
   }
 
+  @Override
   public void setValue(@NotNull T pValue)
   {
     _setValue(pValue, null);
@@ -159,8 +190,22 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
     _setValue(value, pRunner);
   }
 
+  /**
+   * Berechnet seinen Wert in Abhängigket vom Fortschritt
+   *
+   * ACHTUNG: Hier muss das Timing NICHT berücksichtigt werden.
+   *
+   * @param pProgress Frotschritt in Prozent
+   * @return berechneter Wert
+   */
   protected abstract T calculateValue(float pProgress);
 
+  /**
+   * Setzt seinen Wert und informiert alle Consumer
+   *
+   * @param pValue zu setztenden Wert
+   * @param pRunner Thread für Wertänderungen
+   */
   private void _setValue(@NotNull T pValue, @Nullable ITimelineRunner pRunner)
   {
     if(!Objects.equals(value, pValue))
@@ -172,7 +217,7 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
         for (Consumer<T> listener : consumers)
         {
           if (pRunner != null)
-            pRunner.runValueFade(() -> listener.accept(value));
+            pRunner.runValueChange(() -> listener.accept(value));
           else
             listener.accept(value);
         }
@@ -180,6 +225,12 @@ public abstract class AbstractTimelineValue<T> implements ITimelineValue<T>
     }
   }
 
+  /**
+   * Berechnet den Fortschritt in Abhängigkeit der In- und Out-Angaben
+   *
+   * @param pProgress Fortschritt
+   * @return Fortschritt in Abhängigkeit der In- und Out-Angaben
+   */
   private float _calculateInOutProgress(float pProgress)
   {
     Float i = getIn();

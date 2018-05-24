@@ -8,6 +8,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 /**
+ * TimelineValue für Doubles
+ *
  * @author k.mifka, 10.01.2018
  */
 public class TimelineDouble extends AbstractTimelineValue<Double>

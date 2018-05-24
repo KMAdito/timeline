@@ -1,6 +1,8 @@
 package de.adito.aditoweb.timeline.timing;
 
 /**
+ * Sammlung von oft verwendeten ITimelineBeziers
+ *
  * @author k.mifka, 10.01.2018
  */
 public final class TimelineBeziers
